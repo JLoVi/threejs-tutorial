@@ -6,6 +6,7 @@ import { Colours } from '../Components/Global/Global.styles';
 import { GLTFLoader } from '../Utility/Loader/GLTFLoader';
 import AstronautGLB from '../Assets/Models/Astronaut.glb'
 import Model from '../Assets/Models/Chair.glb'
+import MyModel from '../Assets/Models/mymodel.glb'
 
 const TestEnvironmentWrapper = styled.div`height: 100vh;`;
 
@@ -131,7 +132,7 @@ class CubeEnvironment extends Component {
 		// this.addCube();
         this.addLights();
         // this.addModel(AstronautGLB);
-        this.addModel(Model);
+        this.addModel(MyModel);
 	};
 
 	/**

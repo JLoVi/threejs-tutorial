@@ -91,10 +91,9 @@ class PortfolioEnvironment extends Component {
 		this.setupCamera();
 		this.setupControls();
 		this.setupRenderer();
-		// this.setupLoadingManager();
-		// this.setupRayCaster()
-		// this.setupMouse()
-		// this.setupFog();
+		this.setupLoadingManager();
+		this.setupRayCaster()
+		this.setupMouse()
 		this.mount.appendChild(this.renderer.domElement); // mount using React ref
 	};
 
@@ -104,7 +103,7 @@ class PortfolioEnvironment extends Component {
 	 * @memberof PortfolioEnvironment
 	 */
 	setupFog = () => {
-		this.scene.fog = new THREE.FogExp2(new THREE.Color("white"), 0.1); // Color, Density
+		this.scene.fog = new THREE.FogExp2(new THREE.Color("green"), 0.05); // Color, Density
 	}
 
 	/**
@@ -138,8 +137,8 @@ class PortfolioEnvironment extends Component {
      * @memberof CubeEnvironment
      */
 	setupControls = () => {
-		this.setupOrbitControls();
-		// this.setupFlyControls();
+		// this.setupOrbitControls();
+		this.setupFlyControls();
 	};
 
 	/**
@@ -187,7 +186,7 @@ class PortfolioEnvironment extends Component {
      */
 	setupRenderer = () => {
 		this.renderer = new THREE.WebGLRenderer();
-		this.renderer.setClearColor(Colours.light_purple);
+		this.renderer.setClearColor(new THREE.Color("pink"));
 		this.renderer.setSize(this.width, this.height);
 	};
 
@@ -196,7 +195,7 @@ class PortfolioEnvironment extends Component {
 	 *
 	 * @memberof PortfolioEnvironment
 	 */
-	setupMouse = () => {
+	 setupMouse = () => {
 		this.mouse = new THREE.Vector2();
 	}
 
@@ -205,7 +204,7 @@ class PortfolioEnvironment extends Component {
 	 *
 	 * @memberof PortfolioEnvironment
 	 */
-	setMouse = event => {
+	 setMouse = event => {
 		this.mouse.x = (event.clientX / this.mount.clientWidth) * 2 - 1;
 		this.mouse.y = -(event.clientY / this.mount.clientHeight) * 2 + 1;
 	};
@@ -216,14 +215,16 @@ class PortfolioEnvironment extends Component {
      * @memberof CubeEnvironment
      */
 	populateScene = () => {
-		this.addHelpers()
-		this.addCube(new THREE.Vector3(0,0,0), ITEM_LIST.ITEM_ONE);
-		this.addCube( new THREE.Vector3(-20,5,-30), ITEM_LIST.ITEM_TWO);
-		this.addCube(new THREE.Vector3(20,5,-26), ITEM_LIST.ITEM_THREE);
+		// this.addHelpers()
+		// this.addCube(new THREE.Vector3(0,0,0), ITEM_LIST.ITEM_ONE);
+		// this.addCube( new THREE.Vector3(-20,5,-30), ITEM_LIST.ITEM_TWO);
+		// this.addCube(new THREE.Vector3(20,5,-26), ITEM_LIST.ITEM_THREE);
 		this.addLights();
-		// this.addModel(AstronautGLB, new THREE.Vector3(0,0,0), ITEM_LIST.ITEM_ONE);
-		// this.addModel(AstronautGLB, new THREE.Vector3(-20,5,-30), ITEM_LIST.ITEM_TWO);
-		// this.addModel(AstronautGLB, new THREE.Vector3(20,5,-26), ITEM_LIST.ITEM_THREE);
+		this.addModel(AstronautGLB, new THREE.Vector3(0,0,0), ITEM_LIST.ITEM_ONE);
+		this.addModel(AstronautGLB, new THREE.Vector3(-20,5,-30), ITEM_LIST.ITEM_TWO);
+		this.addModel(AstronautGLB, new THREE.Vector3(20,5,-26), ITEM_LIST.ITEM_THREE);
+		this.setupFog();
+
 	};
 
 	/**
